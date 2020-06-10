@@ -7,6 +7,12 @@ import android.widget.TextView
 import android.widget.Toast
 import com.google.android.gms.location.*
 import android.os.Looper
+import android.util.Log
+import android.util.Log.d
+import com.android.volley.Request
+import com.android.volley.Response
+import com.android.volley.toolbox.StringRequest
+import com.android.volley.toolbox.Volley
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -38,12 +44,33 @@ class MainActivity : AppCompatActivity() {
         // 位置情報を更新
         fusedLocationClient.requestLocationUpdates(locationRequest, locationCallback, Looper.myLooper())
 
-
         setContentView(R.layout.activity_main)
     }
     fun btnSendOnClick(view: View) {
-        val txtName: TextView = findViewById(R.id.txtName);
         val txtResult: TextView = findViewById(R.id.txtResult);
+        val queue = Volley.newRequestQueue(this)
+        val url = "http://127.0.0.1:3000/"
+
+        // Request a string response from the provided URL.
+        val stringRequest = StringRequest(
+            Request.Method.GET, url,
+            Response.Listener<String> { response ->
+                // Display the first 500 characters of the response string.
+                txtResult.text = "Response is: ${response.substring(0, 500)}"
+            },
+            Response.ErrorListener { error ->
+                d("うんちっち", error.toString())
+                txtResult.text = "That didn't work!"
+            })
+//            Response.ErrorListener {
+//                txtResult.text = "That didn't work!"
+//            })
+
+        // Add the request to the RequestQueue.
+        queue.add(stringRequest)
+
+        val txtName: TextView = findViewById(R.id.txtName);
         txtResult.setText(txtName.getText());
     }
+
 }
