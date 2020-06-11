@@ -59,7 +59,7 @@ class MainActivity : AppCompatActivity() {
                 txtResult.text = "Response is: ${response.substring(0, 500)}"
             },
             Response.ErrorListener { error ->
-                d("うんちっち", error.toString())
+                d("うんち", error.toString())
                 txtResult.text = "That didn't work!"
             })
 //            Response.ErrorListener {
