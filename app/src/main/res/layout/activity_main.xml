@@ -6,48 +6,38 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-
-
     <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="676dp"
+        android:id="@+id/ll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:orientation="vertical"
-        tools:layout_editor_absoluteX="2dp"
-        tools:layout_editor_absoluteY="54dp">
-
-        <TextView
-            android:id="@+id/textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="名前"
-            tools:layout_editor_absoluteX="46dp"
-            tools:layout_editor_absoluteY="254dp" />
+        tools:layout_editor_absoluteX="1dp"
+        tools:layout_editor_absoluteY="1dp"
+        tools:ignore="InvalidId">
 
         <EditText
-            android:id="@+id/txtName"
-            android:layout_width="wrap_content"
+            android:id="@+id/nameField"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            tools:layout_editor_absoluteX="147dp"
-            tools:layout_editor_absoluteY="240dp" />
+            android:hint="name" />
 
         <Button
-            android:id="@+id/btnSend"
+            android:id="@+id/startButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:onClick="btnSendOnClick"
-            android:text="Button"
-            tools:layout_editor_absoluteX="164dp"
-            tools:layout_editor_absoluteY="405dp" />
+            android:text="Start"
+            app:layout_constraintBottom_toTopOf="@id/finishButton" />
+
+        <Button
+            android:id="@+id/finishButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Finish" />
 
         <TextView
-            android:id="@+id/txtResult"
-            android:layout_width="115dp"
-            android:layout_height="wrap_content"
-            android:text="TextView" />
-
+            android:id="@+id/ieiruTextView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
     </LinearLayout>
-
 </androidx.constraintlayout.widget.ConstraintLayout>
